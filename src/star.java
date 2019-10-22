@@ -10,7 +10,7 @@ public class star {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 //        int a = scanner.nextInt();
-//
+//люда
 //        double[] arra = new double[5];
 //
 //        int n = 5;
