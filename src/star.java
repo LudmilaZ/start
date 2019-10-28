@@ -81,25 +81,101 @@ public class star {
 
 // есть матрица вводим два номера строк они должны быть заменяны местами
 
-        int[][] arr = new int [5][5];
+//        int[][] arr = new int [5][5];
+//
+//        for (int i = 0; i < 5; i++) {
+//            for (int j = 0; j < 5; j++) {
+//                arr[i][j] = (int) (Math.random() * 51);
+//            }
+//        }
+//        System.out.print(Arrays.deepToString(arr));
+//        Scanner scanner = new Scanner(System.in);
+//        int a = scanner.nextInt();
+//        int b = scanner.nextInt();
+//        int change_a;
+//        for (int i = 0; i < 5; i++) {
+//
+//            change_a = arr[a][i];
+//            arr[a][i] = arr[b][i];
+//            arr[b][i] = change_a;
+//        }
+//
+//        System.out.print(Arrays.deepToString(arr));
 
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                arr[i][j] = (int) (Math.random() * 51);
-            }
-        }
-        System.out.print(Arrays.deepToString(arr));
+
+        ///Задача про чат бот
+        String[][] arr = new String[5][3] ;
+        arr[0][0] = "Где ты живешь?";
+        arr[0][1] = "Я там не была";
+        arr[0][2] = "Я там не была";
+        arr[1][0] = "Сколько тебе лет?";
+        arr[1][1] = "0";
+        arr[1][2] = "ММММ понятно!";
+        arr[2][0] = "У тебя есть кошка?";
+        arr[2][1] = "Класс я тоже хочу";
+        arr[2][2] = "ММММ понятно!";
+        arr[3][0] = "Ездил куда нибудь?";
+        arr[3][1] = "Класс я тоже хочу";
+        arr[3][2] = "ММММ понятно!";
+        arr[4][0] = "Был в Мавзолее";
+        arr[4][1] = "Крутяк да! Дядька там классный";
+        arr[4][2] = "Жалко сходи";
+
+        System.out.println("Привет! Меня зовут ЧатБот! Хочешь поговорить со мной?");
         Scanner scanner = new Scanner(System.in);
-        int a = scanner.nextInt();
-        int b = scanner.nextInt();
-        int change_a;
-        for (int i = 0; i < 5; i++) {
-            
-            change_a = arr[a][i];
-            arr[a][i] = arr[b][i];
-            arr[b][i] = change_a;
+        String b = scanner.nextLine();
+        if (recibirRespuestasSiNo(b.toLowerCase())) {
+            System.out.println("Как тебя зовут?");
+            b = scanner.nextLine();
+            System.out.println("Привет " + b);
+            System.out.println("Если я тебе надоела напиши Пока и я уйду");
+            int i = 1;
+            for (i = i; ; ) {
+
+
+                int pregunta = (int) (Math.random() * arr.length);
+                System.out.println(arr[pregunta][0]);
+                b = scanner.nextLine();
+                if (arr[pregunta][1].equals("0")) {
+                    // Проверяем что это число не ноль и большой или маленький
+                    System.out.println(elegirRespuesta(b));
+                } else if (recibirRespuestasSiNo(b.toLowerCase())) {
+
+                    System.out.println(arr[pregunta][1]);
+                }
+                else if (b.equalsIgnoreCase( "пока")){
+                    System.out.println("Пока");
+                    break;
+                }
+                else {
+                    System.out.println(arr[pregunta][2]);
+                }
+            }
+
+        } else {
+            System.out.println("Ну ок пока!");
         }
 
-        System.out.print(Arrays.deepToString(arr));
+
     }
+
+    private static boolean recibirRespuestasSiNo(String respuesta) {
+        if (respuesta.equalsIgnoreCase("да") || respuesta.equalsIgnoreCase("не знаю") || respuesta.equalsIgnoreCase("может быть") || respuesta.equalsIgnoreCase("давай") || respuesta.equalsIgnoreCase("говори")) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    private static String elegirRespuesta(String respuesta) {
+        if (Integer.parseInt(respuesta) == 0) {
+            return "Не обманывай меня";
+        } else if (Integer.parseInt(respuesta) > 20) {
+            return "Большой!";
+        } else {
+            return "Привет малыш!";
+        }
+    }
+
 }
