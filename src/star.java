@@ -10,7 +10,7 @@ import static javafx.beans.binding.Bindings.concat;
 public class star {
 
     public static void main(String[] args) {
-//Дан массив с целыми числами и число вывечти все числа енаиболее близкие к заданному l
+//Дан массив с целыми числами и число вывечти все числа енаиболее близкие к заданному 
         Scanner scanner = new Scanner(System.in);
         int a = scanner.nextInt();
         int mejorNumero = Integer.MAX_VALUE;
